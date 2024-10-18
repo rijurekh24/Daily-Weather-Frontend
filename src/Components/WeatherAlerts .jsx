@@ -38,6 +38,7 @@ const WeatherAlerts = () => {
 
       if (alerts && alerts.length > 0) {
         alerts.forEach((alert) => {
+          console.error(alert);
           toast.error(alert, {
             style: { backgroundColor: "white", color: "#CA0B00" },
           });
@@ -63,8 +64,8 @@ const WeatherAlerts = () => {
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Weather Alert</h1>
       <input
-        type="number" // Add type to ensure it's a number input
-        value={threshold} // Controlled input
+        type="number"
+        value={threshold}
         onChange={(e) => setThreshold(Number(e.target.value))}
         placeholder="Set Temperature Threshold"
         className="border p-2 mr-2"
