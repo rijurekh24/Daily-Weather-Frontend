@@ -18,7 +18,7 @@ export default function WeatherCard({
       <CardHeader className="pb-2">
         <CardTitle className="text-2xl font-bold">{city}</CardTitle>
       </CardHeader>
-      <CardContent className="">
+      <CardContent>
         <div className="flex justify-between items-center mb-4">
           <div>
             <div className="text-3xl font-bold">{currentTemp}°C</div>
