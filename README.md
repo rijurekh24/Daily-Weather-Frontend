@@ -11,6 +11,8 @@ This is the frontend service for a weather application that provides weather ale
   - Maximum temperature
   - Minimum temperature
   - Dominant weather condition
+  - Aggregated Humidity (Bonus)
+  - Aggregated Wind speed (BONUS)
 - Visualize weather data using charts for better insights.
 - Real-time alerts when temperature thresholds are exceeded.
 
