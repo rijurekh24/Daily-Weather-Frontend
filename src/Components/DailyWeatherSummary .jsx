@@ -3,7 +3,6 @@ import axios from "axios";
 import WeatherCard from "./WeatherCard";
 import WeatherChart from "./WeatherChart ";
 import WeatherAlerts from "./WeatherAlerts ";
-
 const DailyWeatherSummary = () => {
   const [summaries, setSummaries] = useState([]);
   const [currentWeather, setCurrentWeather] = useState([]);
@@ -56,7 +55,8 @@ const DailyWeatherSummary = () => {
                   }
                   maxTemp={summary.maxTemp}
                   minTemp={summary.minTemp}
-                  condition={summary.dominantCondition}
+                  condition={currentData?.condition}
+                  feelsLike={currentData?.feelsLike}
                 />
               );
             })}
