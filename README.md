@@ -26,5 +26,5 @@ This is the frontend service for a weather application that provides weather ale
    ```cd weather-app-backend```
 2.  **Install dependencies:**
      ```npm install```
-43 **Start the server:**
+3. **Start the server:**
    ```npm run dev```
