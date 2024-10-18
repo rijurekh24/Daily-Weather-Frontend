@@ -8,7 +8,10 @@ const WeatherAlerts = () => {
 
   const fetchThreshold = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/threshold");
+      // const response = await axios.get("http://localhost:5000/api/threshold");
+      const response = await axios.get(
+        "https://daily-weather-backend.onrender.com/api/threshold"
+      );
       setThreshold(response.data.value);
       await checkAlerts();
     } catch (error) {
@@ -19,9 +22,15 @@ const WeatherAlerts = () => {
 
   const updateThreshold = async (newThreshold) => {
     try {
-      await axios.post("http://localhost:5000/api/threshold", {
-        value: newThreshold,
-      });
+      // await axios.post("http://localhost:5000/api/threshold", {
+      //   value: newThreshold,
+      // });
+      await axios.post(
+        "https://daily-weather-backend.onrender.com/api/threshold",
+        {
+          value: newThreshold,
+        }
+      );
       setThreshold(newThreshold);
       toast.success("Threshold updated successfully.");
       await checkAlerts();

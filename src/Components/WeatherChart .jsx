@@ -28,8 +28,11 @@ const WeatherChart = () => {
     const fetchWeatherData = async () => {
       setLoading(true);
       try {
+        // const response = await axios.get(
+        //   "http://localhost:5000/api/daily-summaries"
+        // );
         const response = await axios.get(
-          "http://localhost:5000/api/daily-summaries"
+          "https://daily-weather-backend.onrender.com/api/daily-summaries"
         );
         setWeatherData(Array.isArray(response.data) ? response.data : []);
       } catch (error) {
