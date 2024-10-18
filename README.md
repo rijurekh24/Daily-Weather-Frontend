@@ -1,8 +1,30 @@
-# React + Vite
+# Weather App Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend service for a weather application that provides weather alerts based on user-defined temperature thresholds. The front-end is built using React, Tailwind CSS, and Chart.js.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Display current weather data for metro cities in India (Delhi, Mumbai, Chennai, Bangalore, Kolkata, Hyderabad).
+- User-configurable temperature thresholds for alerts.
+- Display daily weather summaries, including:
+  - Average temperature
+  - Maximum temperature
+  - Minimum temperature
+  - Dominant weather condition
+- Visualize weather data using charts for better insights.
+- Real-time alerts when temperature thresholds are exceeded.
+
+## Prerequisites
+
+- **Node.js**: Version 14 or higher
+- **API Endpoint**: A running instance of the backend service (see the backend repository for setup instructions).
+
+## Installation
+
+1. **Clone the repository:**
+  ``` git clone https://github.com/yourusername/weather-app-backend.git```
+   ```cd weather-app-backend```
+2.  **Install dependencies:**
+     ```npm install```
+43 **Start the server:**
+   ```npm run dev```
