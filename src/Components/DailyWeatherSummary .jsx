@@ -3,6 +3,7 @@ import axios from "axios";
 import WeatherCard from "./WeatherCard";
 import WeatherChart from "./WeatherChart ";
 import WeatherAlerts from "./WeatherAlerts ";
+
 const DailyWeatherSummary = () => {
   const [summaries, setSummaries] = useState([]);
   const [currentWeather, setCurrentWeather] = useState([]);
@@ -22,7 +23,13 @@ const DailyWeatherSummary = () => {
     const fetchCurrentWeather = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/weather");
-        setCurrentWeather(response.data);
+
+        if (response.data.weatherData) {
+          setCurrentWeather(response.data.weatherData);
+        } else {
+          console.error("No weather data found in response.");
+          setCurrentWeather([]);
+        }
       } catch (error) {
         console.error("Error fetching current weather:", error);
       }
@@ -47,7 +54,7 @@ const DailyWeatherSummary = () => {
 
               return (
                 <WeatherCard
-                  key={summary.date}
+                  key={`${summary.city}-${summary.date}`}
                   city={summary.city}
                   avgTemp={summary.averageTemp}
                   currentTemp={

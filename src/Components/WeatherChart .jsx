@@ -31,7 +31,6 @@ const WeatherChart = () => {
         const response = await axios.get(
           "http://localhost:5000/api/daily-summaries"
         );
-        console.log("Fetched Data:", response.data);
         setWeatherData(Array.isArray(response.data) ? response.data : []);
       } catch (error) {
         console.error("Error fetching weather data:", error);

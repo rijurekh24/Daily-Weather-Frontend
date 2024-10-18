@@ -4,12 +4,13 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const WeatherAlerts = () => {
-  const [threshold, setThreshold] = useState();
+  const [threshold, setThreshold] = useState(35);
 
   const fetchThreshold = async () => {
     try {
       const response = await axios.get("http://localhost:5000/api/threshold");
       setThreshold(response.data.value);
+      await checkAlerts();
     } catch (error) {
       console.error("Error fetching threshold:", error);
       toast.error("Error fetching threshold.");
@@ -23,6 +24,7 @@ const WeatherAlerts = () => {
       });
       setThreshold(newThreshold);
       toast.success("Threshold updated successfully.");
+      await checkAlerts();
     } catch (error) {
       console.error("Error updating threshold:", error);
       toast.error("Error updating threshold.");
@@ -32,17 +34,9 @@ const WeatherAlerts = () => {
   const checkAlerts = async () => {
     try {
       const response = await axios.get("http://localhost:5000/api/weather");
-      const alerts = response.data
-        .map((data) => {
-          const temp = parseFloat(data.temp);
-          if (temp > threshold) {
-            return `Alert: ${data.city} exceeded over ${threshold}°C! (Current: ${temp}°C)`;
-          }
-          return null;
-        })
-        .filter((alert) => alert !== null);
+      const { weatherData, alerts } = response.data;
 
-      if (alerts.length > 0) {
+      if (alerts && alerts.length > 0) {
         alerts.forEach((alert) => {
           toast.error(alert, {
             style: { backgroundColor: "white", color: "#CA0B00" },
@@ -61,7 +55,6 @@ const WeatherAlerts = () => {
 
   useEffect(() => {
     fetchThreshold();
-    checkAlerts();
     const interval = setInterval(checkAlerts, 300000);
     return () => clearInterval(interval);
   }, []);
@@ -70,7 +63,8 @@ const WeatherAlerts = () => {
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Weather Alert</h1>
       <input
-        value={threshold}
+        type="number" // Add type to ensure it's a number input
+        value={threshold} // Controlled input
         onChange={(e) => setThreshold(Number(e.target.value))}
         placeholder="Set Temperature Threshold"
         className="border p-2 mr-2"
