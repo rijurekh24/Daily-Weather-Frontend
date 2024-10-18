@@ -42,7 +42,7 @@ const DailyWeatherSummary = () => {
   return (
     <>
       <div className="flex flex-col md:flex-row">
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-1">
           <h1 className="text-2xl font-bold text-center mb-4">
             Daily Weather Summaries
           </h1>
@@ -64,16 +64,18 @@ const DailyWeatherSummary = () => {
                   minTemp={summary.minTemp}
                   condition={currentData?.condition}
                   feelsLike={currentData?.feelsLike}
+                  avgwind={summary.averageWindSpeed}
+                  avghumi={summary.averageHumidity}
                 />
               );
             })}
           </div>
         </div>
-        <div className="flex-1 p-4">
+        <div className="flex-1">
           <WeatherChart />
+          <WeatherAlerts />
         </div>
       </div>
-      <WeatherAlerts />
     </>
   );
 };

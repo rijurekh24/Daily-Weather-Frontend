@@ -17,7 +17,7 @@ createRoot(document.getElementById("root")).render(
       pauseOnHover
       draggable
       theme="light"
-      style={{ bottom: "80px" }}
+      style={{ bottom: "10px" }}
     />
   </>
 );
