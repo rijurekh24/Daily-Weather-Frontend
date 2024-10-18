@@ -12,9 +12,6 @@ const App = () => {
             <Route path="/" element={<DailyWeatherSummary />} />
           </Routes>
         </main>
-        <footer className="bg-gray-100 text-center p-1">
-          <p>&copy; {new Date().getFullYear()} Weather App</p>
-        </footer>
       </div>
     </Router>
   );
