@@ -28,7 +28,7 @@ const DailyWeatherSummary = () => {
         const response = await axios.get(
           "https://daily-weather-backend.onrender.com/api/weather"
         );
-        // const response = await axios.get("http://localhost:5000/api/weather");
+        //const response = await axios.get("http://localhost:5000/api/weather");
 
         if (response.data.weatherData) {
           setCurrentWeather(response.data.weatherData);

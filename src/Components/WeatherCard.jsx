@@ -23,7 +23,9 @@ export default function WeatherCard({
         <div className="flex justify-between items-center mb-4">
           <div>
             <div className="text-3xl font-bold">{currentTemp}°C</div>
-            <div className="text text-gray-500">Average: {avgTemp}°C</div>
+            <div className="text text-gray-500">
+              Average: {avgTemp.toFixed(2)}°C
+            </div>
             <div className="text text-gray-500">Feels Like: {feelsLike}°C</div>
             <div className="text text-gray-500">
               Dominatant Condition: {dominantCondition}
@@ -35,17 +37,19 @@ export default function WeatherCard({
           <div className="grid grid-cols-2 gap-4 mb-1">
             <div className="flex items-center">
               <Thermometer className="h-5 w-5 text-red-500 mr-2" />
-              <span className="text-sm">Max: {maxTemp}°C</span>
+              <span className="text-sm">Max: {maxTemp.toFixed(2)}°C</span>
             </div>
             <div className="flex items-center">
               <Thermometer className="h-5 w-5 text-blue-700 mr-2" />
-              <span className="text-sm">Min: {minTemp}°C</span>
+              <span className="text-sm">Min: {minTemp.toFixed(2)}°C</span>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4 ">
             <div className="flex items-center">
               <ThermometerSun className="h-5 w-5 text-yellow-500 mr-2" />
-              <span className="text-sm">Avg Humidity: {avghumi}%</span>
+              <span className="text-sm">
+                Avg Humidity: {avghumi.toFixed(2)}%
+              </span>
             </div>
             <div className="flex items-center">
               <Wind className="h-5 w-5 text-blue-400 mr-2" />
