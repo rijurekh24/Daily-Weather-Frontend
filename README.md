@@ -1,9 +1,13 @@
 # Weather Monitoring App Frontend
 
-This is the frontend service for a weather application that provides weather alerts based on user-defined temperature thresholds. The front-end is built using React, Tailwind CSS, and Chart.js.
-
 ## Live URL
 ```https://daily-weather-monitoring.vercel.app/```
+
+## Objective
+This frontend service for a weather application provides weather alerts based on user-defined temperature thresholds.
+
+## Tech Stack
+React, Tailwind CSS, and Chart.js
 
 ## Features
 
@@ -27,8 +31,8 @@ This is the frontend service for a weather application that provides weather ale
 ## Installation
 
 1. **Clone the repository:**
-  ``` git clone https://github.com/yourusername/weather-app-backend.git```
-   ```cd weather-app-backend```
+  ``` git clone https://github.com/rijurekh24/Daily-Weather-Frontend.git```
+   ```cd weather-app-frontend```
 2.  **Install dependencies:**
      ```npm install```
 3. **Start the server:**
