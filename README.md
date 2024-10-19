@@ -1,7 +1,7 @@
 # Weather Monitoring App Frontend
 
 ## Live URL
-```https://daily-weather-monitoring.vercel.app/```
+```https://daily-weather-monitoring.vercel.app/``` ```(**Note**: The free server that is being used is slow, please wait a while if the data doesn't appear immediately , please coniue refreshing or please run locally )```
 
 ## Objective
 This frontend service for a weather application provides weather alerts based on user-defined temperature thresholds.
