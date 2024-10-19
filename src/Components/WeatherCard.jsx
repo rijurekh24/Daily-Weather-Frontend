@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/Card";
+import { Card, CardContent, CardHeader, CardTitle } from "./Card";
 import { Thermometer, ThermometerSun, Wind } from "lucide-react";
 
 export default function WeatherCard({
