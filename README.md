@@ -27,7 +27,7 @@ This is the frontend service for a weather application that provides weather ale
 ## Installation
 
 1. **Clone the repository:**
-  ``` git clone https://github.com/yourusername/weather-app-backend.git```
+  ``` git clone https://github.com/rijurekh24/Daily-Weather-Frontend.git```
    ```cd weather-app-backend```
 2.  **Install dependencies:**
      ```npm install```
