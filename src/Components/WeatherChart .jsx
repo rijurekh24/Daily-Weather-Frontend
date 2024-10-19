@@ -28,12 +28,12 @@ const WeatherChart = () => {
     const fetchWeatherData = async () => {
       setLoading(true);
       try {
-        // const response = await axios.get(
-        //   "http://localhost:5000/api/daily-summaries"
-        // );
         const response = await axios.get(
           "https://daily-weather-backend.onrender.com/api/daily-summaries"
         );
+        // const response = await axios.get(
+        //   "http://localhost:5000/api/daily-summaries"
+        // );
         setWeatherData(Array.isArray(response.data) ? response.data : []);
       } catch (error) {
         console.error("Error fetching weather data:", error);
@@ -53,7 +53,18 @@ const WeatherChart = () => {
     return <div className="text-center text-xl">No data available</div>;
   }
 
+  const uniqueDates = [...new Set(weatherData.map((item) => item.date))];
   const cities = [...new Set(weatherData.map((item) => item.city))];
+
+  const today = new Date();
+  const upcomingDates = [];
+  for (let i = 1; i <= 7; i++) {
+    const nextDate = new Date(today);
+    nextDate.setDate(today.getDate() + i);
+    upcomingDates.push(nextDate.toISOString().split("T")[0]);
+  }
+
+  const completeDates = [...new Set([...uniqueDates, ...upcomingDates])];
 
   const colorPalette = [
     "rgba(220, 0, 0, 1)",
@@ -65,19 +76,23 @@ const WeatherChart = () => {
   ];
 
   const datasets = cities.map((city, index) => {
-    const cityData = weatherData.filter((item) => item.city === city);
+    const cityData = completeDates.map((date) => {
+      const dailyData = weatherData.find(
+        (item) => item.city === city && item.date === date
+      );
+      return dailyData ? dailyData.averageTemp : null;
+    });
+
     return {
       label: city,
-      data: cityData.map((item) => item.averageTemp),
+      data: cityData,
       borderColor: colorPalette[index % colorPalette.length],
       fill: false,
     };
   });
 
-  const labels = weatherData.map((item) => item.date);
-
   const data = {
-    labels: labels,
+    labels: completeDates,
     datasets: datasets,
   };
 

@@ -12,9 +12,11 @@ const DailyWeatherSummary = () => {
     const fetchSummaries = async () => {
       try {
         const response = await axios.get(
-          // "http://localhost:5000/api/daily-summaries"
           "https://daily-weather-backend.onrender.com/api/daily-summaries"
         );
+        // const response = await axios.get(
+        //   "http://localhost:5000/api/daily-summaries"
+        // );
         setSummaries(response.data);
       } catch (error) {
         console.error("Error fetching daily summaries:", error);
@@ -23,10 +25,10 @@ const DailyWeatherSummary = () => {
 
     const fetchCurrentWeather = async () => {
       try {
-        // const response = await axios.get("http://localhost:5000/api/weather");
         const response = await axios.get(
           "https://daily-weather-backend.onrender.com/api/weather"
         );
+        // const response = await axios.get("http://localhost:5000/api/weather");
 
         if (response.data.weatherData) {
           setCurrentWeather(response.data.weatherData);
@@ -43,6 +45,10 @@ const DailyWeatherSummary = () => {
     fetchCurrentWeather();
   }, []);
 
+  const latestDate = summaries.reduce((latest, summary) => {
+    return summary.date > latest ? summary.date : latest;
+  }, summaries[0]?.date);
+
   return (
     <>
       <div className="flex flex-col md:flex-row">
@@ -51,28 +57,32 @@ const DailyWeatherSummary = () => {
             Daily Weather Summaries
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            {summaries.map((summary) => {
-              const currentData = currentWeather.find(
-                (data) => data.city.toLowerCase() === summary.city.toLowerCase()
-              );
+            {summaries
+              .filter((summary) => summary.date === latestDate)
+              .map((summary) => {
+                const currentData = currentWeather.find(
+                  (data) =>
+                    data.city.toLowerCase() === summary.city.toLowerCase()
+                );
 
-              return (
-                <WeatherCard
-                  key={`${summary.city}-${summary.date}`}
-                  city={summary.city}
-                  avgTemp={summary.averageTemp}
-                  currentTemp={
-                    currentData ? parseFloat(currentData.temp) : null
-                  }
-                  maxTemp={summary.maxTemp}
-                  minTemp={summary.minTemp}
-                  dominantCondition={summary.dominantCondition}
-                  feelsLike={currentData?.feelsLike}
-                  avgwind={summary.averageWindSpeed}
-                  avghumi={summary.averageHumidity}
-                />
-              );
-            })}
+                return (
+                  <WeatherCard
+                    key={`${summary.city}-${summary.date}`}
+                    city={summary.city}
+                    avgTemp={summary.averageTemp}
+                    currentTemp={
+                      currentData ? parseFloat(currentData.temp) : null
+                    }
+                    maxTemp={summary.maxTemp}
+                    minTemp={summary.minTemp}
+                    dominantCondition={summary.dominantCondition}
+                    feelsLike={currentData?.feelsLike}
+                    avgwind={summary.averageWindSpeed}
+                    avghumi={summary.averageHumidity}
+                    date={summary.date}
+                  />
+                );
+              })}
           </div>
         </div>
         <div className="flex-1">

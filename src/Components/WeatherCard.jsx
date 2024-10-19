@@ -12,6 +12,7 @@ export default function WeatherCard({
   feelsLike,
   avgwind,
   avghumi,
+  date,
 }) {
   return (
     <Card className="w-full max-w-sm mx-auto shadow-md rounded-lg px-">
@@ -27,6 +28,7 @@ export default function WeatherCard({
             <div className="text text-gray-500">
               Dominatant Condition: {dominantCondition}
             </div>
+            <div className="text text-gray-500">Date: {date}</div>
           </div>
         </div>
         <div>
