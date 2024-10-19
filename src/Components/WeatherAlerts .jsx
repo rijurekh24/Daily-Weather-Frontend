@@ -50,8 +50,11 @@ const WeatherAlerts = () => {
 
       if (alerts && alerts.length > 0) {
         alerts.forEach((alert) => {
-          console.error(alert);
-          toast.error(alert, {
+          const formatData = alert.replace(/(\d+\.\d+)/, (i) => {
+            return parseFloat(i).toFixed(2);
+          });
+          console.error(formatData);
+          toast.error(formatData, {
             style: { backgroundColor: "white", color: "#CA0B00" },
           });
         });
