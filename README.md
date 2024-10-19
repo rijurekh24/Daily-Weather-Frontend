@@ -2,6 +2,9 @@
 
 This is the frontend service for a weather application that provides weather alerts based on user-defined temperature thresholds. The front-end is built using React, Tailwind CSS, and Chart.js.
 
+## Live URL
+```https://daily-weather-monitoring.vercel.app/```
+
 ## Features
 
 - Display current weather data for metro cities in India (Delhi, Mumbai, Chennai, Bangalore, Kolkata, Hyderabad).
